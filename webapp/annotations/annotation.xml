@@ -1,0 +1,121 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata4/sap/zui_storepickuporder_v4/srvd/sap/zui_storepickuporder/0001/$metadata">
+        <edmx:Include Namespace="com.sap.gateway.srvd.zui_storepickuporder.v0001" Alias="SAP__self"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP__self.PickupOrderType">
+                <Annotation Term="UI.Identification">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerName"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Attachment"/>
+                        </Record>
+                        
+                        <Record Type="UI.DataFieldForAction">
+                            <!--> <PropertyValue Property="Label" String="Kopfrabatt"/> </!-->
+                            <PropertyValue Property="Label" String="{@i18n>Kopfrabatt}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setHeaderDiscount(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>Personalkartennummer}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setPersonnelNo(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>Supercard}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setSuperCard(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="KundenauftragPositon"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeErhalten"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeUebergabe"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeStorno"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Lagerplatz"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ConditionRateValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ConditionRateValuePer"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BringInConditionRateValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="PickUpCondTotalRateValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MobilePrTwoYrCondRateValue"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="MobilePrOneYrCondRateValue"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>Aktivieren}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.activateArticle(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>GarantiePickUp}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtPickUp(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>GarantieBringIn}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtBringIn(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>MobileProtect2Y}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectTwoYr(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>MobileProtect1Y}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectOneYr(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <Annotation Term="UI.Hidden"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="{@i18n>PosRabatt}"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setPosDiscount(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="UI.OperationGroupingType/Isolated"/>
+                            <PropertyValue Property="Inline" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

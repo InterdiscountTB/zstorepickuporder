@@ -1,0 +1,322 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "zstorepickuporder",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:worklist",
+      "version": "1.15.4",
+      "toolsId": "74d9b354-5a20-4c69-81bf-4c8c2451f786"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zui_storepickuporder_v4/srvd/sap/zui_storepickuporder/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {},
+        "sap.f": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zstorepickuporder.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "i18n|sap.suite.ui.generic.template.ObjectPage|PickupOrder": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/ObjectPage/PickupOrder/i18n.properties"
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {
+        "flexibleColumnLayout": {
+          "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+          "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+        },
+        "routerClass": "sap.f.routing.Router"
+      },
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "PickupOrderList",
+          "target": [
+            "PickupOrderList"
+          ]
+        },
+        {
+          "pattern": "PickupOrder({key}):?query:",
+          "name": "PickupOrderObjectPage",
+          "target": [
+            "PickupOrderList",
+            "PickupOrderObjectPage"
+          ]
+        },
+        {
+          "pattern": "PickupOrder({key})/_StorePickupOrderItem({key2}):?query:",
+          "name": "PickupOrderItemObjectPage",
+          "target": [
+            "PickupOrderList",
+            "PickupOrderObjectPage",
+            "PickupOrderItemObjectPage"
+          ]
+        }
+      ],
+      "targets": {
+        "PickupOrderList": {
+          "type": "Component",
+          "id": "PickupOrderList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/PickupOrder",
+              "variantManagement": "Page",
+              "hideFilterBar": true,
+              "navigation": {
+                "PickupOrder": {
+                  "detail": {
+                    "route": "PickupOrderObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "selectionMode": "Single"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "beginColumnPages",
+          "contextPattern": ""
+        },
+        "PickupOrderObjectPage": {
+          "type": "Component",
+          "id": "PickupOrderObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/PickupOrder",
+              "enhanceI18n": "i18n/ObjectPage/PickupOrder/i18n.properties",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "selectionMode": "Single"
+                  }
+                },
+                "_StorePickupOrderItem/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "actions": {
+                    "btnActivateArticle": {
+                      "press": "zstorepickuporder.ext.controller.Scanner.scanActivateArticle",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.scanActivateArticleEnable",
+                      "requiresSelection": true,
+                      "text": "{i18n>Aktivieren}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.activateArticle::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"
+                      }
+                    },
+                    "btnBringIn": {
+                      "press": "zstorepickuporder.ext.controller.Handler.onBringIn",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.onBringInEnable",
+                      "requiresSelection": true,
+                      "text": "{i18n>GarantieBringIn}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtBringIn::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"
+                      }
+                    },
+                    "btnPickUp": {
+                      "press": "zstorepickuporder.ext.controller.Handler.onPickUp",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.onPickUpEnable",
+                      "requiresSelection": true,
+                      "text": "{i18n>GarantiePickUp}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtPickUp::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"
+                      }
+                    },
+                    "btnMobileProtectTwoYear": {
+                      "press": "zstorepickuporder.ext.controller.Handler.onMobilePrTwoYr",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.onMobilePrTwoYrEnable",
+                      "requiresSelection": true,
+                      "text": "{i18n>MobileProtect2Y}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectTwoYr::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"
+                      }
+                    },
+                    "btnMobileProtectOneYear": {
+                      "press": "zstorepickuporder.ext.controller.Handler.onMobilePrOneYr",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.onMobilePrOneYrEnable",
+                      "requiresSelection": true,
+                      "text": "{i18n>MobileProtect1Y}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectOneYr::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"
+                      }
+                    }
+                  },
+                  "tableSettings": {
+                    "selectionLimit": -12,
+                    "selectionMode": "Single"
+                  }
+                },
+                "_StorePickupOrderItemNlag/@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "selectionMode": "Single"
+                  }
+                }
+              },
+              "content": {
+                "header": {
+                  "actions": {
+                    "btnSuperCardScan": {
+                      "press": "zstorepickuporder.ext.controller.Scanner.scanSupercard",
+                      "visible": true,
+                      "enabled": true,
+                      "text": "{i18n>Supercard}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setSuperCard::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType"
+                      }
+                    },
+                    "btnPersonalkartennummer": {
+                      "press": "zstorepickuporder.ext.controller.Scanner.scanPersonalkartennummer",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.scanPersonalkartennummerEnable",
+                      "text": "{i18n>Personalkartennummer}",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "DataFieldForAction::com.sap.gateway.srvd.zui_storepickuporder.v0001.setPersonnelNo::com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType"
+                      }
+                    }
+                  }
+                },
+                "footer": {
+                  "actions": {
+                    "btnShowAttachment": {
+                      "press": "zstorepickuporder.ext.controller.Handler.showAttachment",
+                      "visible": true,
+                      "enabled": "zstorepickuporder.ext.controller.Handler.showAttachmentEnable",
+                      "text": "{i18n>AnhangAnzeigen}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "midColumnPages",
+          "contextPattern": "/PickupOrder({key})"
+        },
+        "PickupOrderItemObjectPage": {
+          "type": "Component",
+          "id": "PickupOrderItemObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/PickupOrder/_StorePickupOrderItem",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable",
+                    "selectionMode": "Single"
+                  }
+                }
+              }
+            }
+          },
+          "controlAggregation": "endColumnPages",
+          "contextPattern": "/PickupOrder({key})/_StorePickupOrderItem({key2})"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "sap.fe.templates.RootContainer.view.Fcl",
+      "type": "XML",
+      "async": true,
+      "id": "appRootView"
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

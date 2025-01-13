@@ -1,0 +1,1793 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="SAP__measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="SAP__capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="SAP__aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="SAP__validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="SAP__UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HTML5',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.HTML5.v1" Alias="SAP__HTML5"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PDF',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.PDF.v1" Alias="SAP__PDF"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_SESSION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Session.v1" Alias="SAP__session"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_HIERARCHY',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Hierarchy.v1" Alias="SAP__hierarchy"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="com.sap.gateway.srvd.zui_storepickuporder.v0001" Alias="SAP__self">
+            <Annotation Term="SAP__core.SchemaVersion" String="1.0.0"/>
+            <EntityType Name="PickupOrderItemType">
+                <Key>
+                    <PropertyRef Name="Lieferung"/>
+                    <PropertyRef Name="LieferungPosition"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Lieferung" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="LieferungPosition" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Kundenauftrag" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="KundenauftragPositon" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Auftraggeber" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Warenempfaenger" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="MaterialName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="MengeLieferung" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="MengeEinheit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="MengeErhalten" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3"/>
+                <Property Name="Lagerplatz" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Ladegruppe" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="StatusDatum" Type="Edm.Date"/>
+                <Property Name="MengeUebergabe" Type="Edm.Decimal" Nullable="false" Precision="13"/>
+                <Property Name="MengeStorno" Type="Edm.Decimal" Nullable="false" Precision="13"/>
+                <Property Name="Retoure" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="KzReset" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="KzClarify" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="NumberOfActivation" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="Kommentar" Type="Edm.String" Nullable="false" MaxLength="60"/>
+                <Property Name="LoadingGroup" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ActivationIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="ProductHierarchy" Type="Edm.String" Nullable="false" MaxLength="18"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="SalesDocumentCondition" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Division" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="NetAmount" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="variable"/>
+                <Property Name="OrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="OrderQuantity" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="TransactionCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="SalesDocumentItemCategory" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DeliveryDocumentItemCategory" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="ConditionRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="2"/>
+                <Property Name="ConditionCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="ConditionRateValuePer" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="2"/>
+                <Property Name="ConditionCurrencyPer" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="NlagBringInProduct" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="NlagPickUpProduct" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="BringInConditionUnit" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="VKP0ConditionCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="VPK0ConditionRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="9"/>
+                <Property Name="BringInConditionRateValue" Type="Edm.Decimal" Nullable="false" Precision="25" Scale="3"/>
+                <Property Name="BringInConditionIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PickUpCondTotalRateValue" Type="Edm.Decimal" Nullable="false" Precision="26" Scale="3"/>
+                <Property Name="PickUpCondIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="MobilePrOneYrCondRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+                <Property Name="MobPrOneYrCondNumbOfEntries" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="MobilePrOneYrCondIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="MobilePrTwoYrCondIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="MobilePrTwoYrCondRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+                <Property Name="MobPrTwoYrCondNumbOfEntries" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.EntityControl"/>
+                <Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemOperationControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_storepickuporder.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.I_DraftAdministrativeDataType"/>
+                <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType"/>
+                <NavigationProperty Name="_PickupOrder" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false" Partner="_StorePickupOrderItem">
+                    <ReferentialConstraint Property="Kundenauftrag" ReferencedProperty="SalesOrder"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_SalesOrderItemNlag" Type="Collection(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemNlagType)"/>
+            </EntityType>
+            <EntityType Name="PickupOrderItemNlagType">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="SalesOrderItem"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SalesOrderItem" Type="Edm.String" Nullable="false" MaxLength="6"/>
+                <Property Name="Product" Type="Edm.String" Nullable="false" MaxLength="9"/>
+                <Property Name="ProductName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="OrderQuantity" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3"/>
+                <Property Name="OrderQuantityUnit" Type="Edm.String" Nullable="false" MaxLength="3"/>
+                <Property Name="HigherLevelItem" Type="Edm.String" Nullable="false" MaxLength="6"/>
+            </EntityType>
+            <EntityType Name="I_DraftAdministrativeDataType">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="DraftEntityType"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="DraftEntityType" Type="Edm.String" Nullable="false" MaxLength="30"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="CreatedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="DraftAccessType" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="InProcessByUser" Type="Edm.String" Nullable="false" MaxLength="12"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" Nullable="false" MaxLength="80"/>
+            </EntityType>
+            <EntityType Name="PickupOrderType">
+                <Key>
+                    <PropertyRef Name="SalesOrder"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="SalesOrder" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="SalesOrderType" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="PurchaseOrderByCustomer" Type="Edm.String" Nullable="false" MaxLength="35"/>
+                <Property Name="SalesOrganization" Type="Edm.String" Nullable="false" MaxLength="4"/>
+                <Property Name="DistributionChannel" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="OrganizationDivision" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="Customer" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="CustomerName" Type="Edm.String" Nullable="false" MaxLength="80"/>
+                <Property Name="SearchCustomerName" Type="Edm.String" Nullable="false" MaxLength="40"/>
+                <Property Name="PaymentStatus" Type="Edm.String" Nullable="false" MaxLength="2"/>
+                <Property Name="PaymentStatusDescription" Type="Edm.String" Nullable="false" MaxLength="100"/>
+                <Property Name="SuperCardNo" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="PersonnelNo" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="SalesOrderCondition" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="ConditionRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="2"/>
+                <Property Name="ConditionCurrency" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Property Name="Attachment" Type="Edm.Stream"/>
+                <Property Name="MimeType" Type="Edm.String" Nullable="false" MaxLength="128"/>
+                <Property Name="Filename" Type="Edm.String" Nullable="false" MaxLength="128"/>
+                <Property Name="LastChangeDate" Type="Edm.Date"/>
+                <Property Name="NumberOfItemsToPick" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="StorePickupStatusEditable" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="PersonalCardIsEnabled" Type="Edm.String" Nullable="false" MaxLength="1"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="__EntityControl" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.EntityControl"/>
+                <Property Name="__OperationControl" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderOperationControl"/>
+                <Property Name="SAP__Messages" Type="Collection(com.sap.gateway.srvd.zui_storepickuporder.v0001.SAP__Message)" Nullable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.I_DraftAdministrativeDataType"/>
+                <NavigationProperty Name="SiblingEntity" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType"/>
+                <NavigationProperty Name="_StorePickupOrderItem" Type="Collection(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)" Partner="_PickupOrder">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="_StorePickupOrderItemNlag" Type="Collection(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemNlagType)"/>
+            </EntityType>
+            <ComplexType Name="PickupOrderItemOperationControl">
+                <Property Name="activateArticle" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setMobileProtectOneYr" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setMobileProtectTwoYr" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setPosDiscount" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setWarrantyExtBringIn" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setWarrantyExtPickUp" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="PickupOrderOperationControl">
+                <Property Name="Edit" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setHeaderDiscount" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setPersonnelNo" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="setSuperCard" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="EntityControl">
+                <Property Name="Updatable" Type="Edm.Boolean" Nullable="false"/>
+            </ComplexType>
+            <ComplexType Name="SAP__Message">
+                <Property Name="code" Type="Edm.String" Nullable="false"/>
+                <Property Name="message" Type="Edm.String" Nullable="false"/>
+                <Property Name="target" Type="Edm.String"/>
+                <Property Name="additionalTargets" Type="Collection(Edm.String)" Nullable="false"/>
+                <Property Name="transition" Type="Edm.Boolean" Nullable="false"/>
+                <Property Name="numericSeverity" Type="Edm.Byte" Nullable="false"/>
+                <Property Name="longtextUrl" Type="Edm.String"/>
+            </ComplexType>
+            <Action Name="Activate" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+            </Action>
+            <Action Name="activateArticle" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="numberOfActivation" Type="Edm.Int32" Nullable="false"/>
+                <Parameter Name="cardId" Type="Edm.String" Nullable="false" MaxLength="50"/>
+            </Action>
+            <Action Name="setWarrantyExtPickUp" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="ConditionCurreny" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="PickUpCondTotalRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+            </Action>
+            <Action Name="setPersonnelNo" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+                <Parameter Name="PersonnelNo" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </Action>
+            <Action Name="setHeaderDiscount" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+                <Parameter Name="DiscountAmount" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="2"/>
+            </Action>
+            <Action Name="Prepare" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+            </Action>
+            <Action Name="setSuperCard" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+                <Parameter Name="SuperCardId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+            </Action>
+            <Action Name="Edit" EntitySetPath="_it" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+                <Parameter Name="PreserveChanges" Type="Edm.Boolean" Nullable="false"/>
+                <ReturnType Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+            </Action>
+            <Action Name="setMobileProtectOneYr" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="ConditionCurreny" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="MobilePrOneYrCondRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+            </Action>
+            <Action Name="Discard" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+            </Action>
+            <Action Name="setWarrantyExtBringIn" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="ConditionCurreny" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="BringInConditionRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+            </Action>
+            <Action Name="setPosDiscount" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="ConditionCurreny" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="DiscountAmount" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="2"/>
+                <Parameter Name="ConditionCurrenyPer" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="DiscountAmountPer" Type="Edm.Decimal" Nullable="false" Precision="24"/>
+            </Action>
+            <Action Name="setMobileProtectTwoYr" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType" Nullable="false"/>
+                <Parameter Name="ConditionCurreny" Type="Edm.String" Nullable="false" MaxLength="5"/>
+                <Parameter Name="MobilePrTwoYrCondRateValue" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3"/>
+            </Action>
+            <Action Name="Resume" IsBound="true">
+                <Parameter Name="_it" Type="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType" Nullable="false"/>
+            </Action>
+            <EntityContainer Name="Container">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="com.sap.gateway.srvd.zui_storepickuporder.v0001.I_DraftAdministrativeDataType"/>
+                <EntitySet Name="PickupOrder" EntityType="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType">
+                    <NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="PickupOrder"/>
+                    <NavigationPropertyBinding Path="_StorePickupOrderItem" Target="PickupOrderItem"/>
+                    <NavigationPropertyBinding Path="_StorePickupOrderItemNlag" Target="PickupOrderItemNlag"/>
+                </EntitySet>
+                <EntitySet Name="PickupOrderItem" EntityType="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType">
+                    <NavigationPropertyBinding Path="DraftAdministrativeData" Target="I_DraftAdministrativeData"/>
+                    <NavigationPropertyBinding Path="SiblingEntity" Target="PickupOrderItem"/>
+                    <NavigationPropertyBinding Path="_PickupOrder" Target="PickupOrder"/>
+                    <NavigationPropertyBinding Path="_SalesOrderItemNlag" Target="PickupOrderItemNlag"/>
+                </EntitySet>
+                <EntitySet Name="PickupOrderItemNlag" EntityType="com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemNlagType"/>
+            </EntityContainer>
+            <Annotations Target="SAP__self.PickupOrderItemType/Lieferung">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Lieferung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/LieferungPosition">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Position"/>
+                <Annotation Term="SAP__common.Heading" String="Pos"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Lieferposition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Kundenauftrag">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsbeleg"/>
+                <Annotation Term="SAP__common.Heading" String="Verkaufsb."/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/KundenauftragPositon">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Position"/>
+                <Annotation Term="SAP__common.Heading" String="Pos"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Verkaufsbelegposition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Auftraggeber">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Auftraggeber"/>
+                <Annotation Term="SAP__common.Heading" String="AuftrGeber"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Warenempfaenger">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Warenempfänger"/>
+                <Annotation Term="SAP__common.Heading" String="Warenempf."/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Material">
+                <Annotation Term="SAP__common.Label" String="Artikel"/>
+                <Annotation Term="SAP__common.Text" Path="MaterialName"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Heading" String="Material"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Materialnummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MaterialName">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Materialkurztext"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MengeLieferung">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.Unit" Path="MengeEinheit"/>
+                <Annotation Term="SAP__common.Label" String="Erwartete Menge"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MengeEinheit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsmengeneinh."/>
+                <Annotation Term="SAP__common.Heading" String="ME"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Verkaufsmengeneinheit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MengeErhalten">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.Unit" Path="MengeEinheit"/>
+                <Annotation Term="SAP__common.Label" String="Liefermenge"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Tatsächlich gelieferte Menge in VME"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Lagerplatz">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Lagerplatz"/>
+                <Annotation Term="SAP__common.Heading" String="Platz"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Ladegruppe">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Ladegruppe"/>
+                <Annotation Term="SAP__common.Heading" String="LGrp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/StatusDatum">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Datum"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MengeUebergabe">
+                <Annotation Term="SAP__common.Label" String="Übergeben"/>
+                <Annotation Term="SAP__measures.Unit" Path="MengeEinheit"/>
+                <Annotation Term="SAP__common.Heading" String="Menge Übergabe"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Menge Übergabe"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MengeStorno">
+                <Annotation Term="SAP__common.Label" String="Storno"/>
+                <Annotation Term="SAP__measures.Unit" Path="MengeEinheit"/>
+                <Annotation Term="SAP__common.Heading" String="Menge Storno"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Menge Storno"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Retoure">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Vertriebsbeleg"/>
+                <Annotation Term="SAP__common.Heading" String="Beleg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Vertriebsbelegnummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/KzReset">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Zurückstellen"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Flag Zurückstellen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/KzClarify">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Klären"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Flag Klären"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/NumberOfActivation">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Anz. Aktivierungen"/>
+                <Annotation Term="SAP__common.Heading" String="Anz. Aktivier."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Anzahl Aktivierungen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Kommentar">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Kommentar"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/LoadingGroup">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Ladegruppe"/>
+                <Annotation Term="SAP__common.Heading" String="LGrp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/ProductHierarchy">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Produkthierarchie"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/SalesOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsorganisation"/>
+                <Annotation Term="SAP__common.Heading" String="VkOrg"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/DistributionChannel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Vertriebsweg"/>
+                <Annotation Term="SAP__common.Heading" String="VWeg"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/SalesDocumentCondition">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Nr. Belegkondition"/>
+                <Annotation Term="SAP__common.Heading" String="Belegkond"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nummer der Belegkondition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/Division">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sparte"/>
+                <Annotation Term="SAP__common.Heading" String="SP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/NetAmount">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="TransactionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Nettowert"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nettowert der Belegposition in Belegwährung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/OrderQuantityUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsmengeneinh."/>
+                <Annotation Term="SAP__common.Heading" String="ME"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Verkaufsmengeneinheit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/OrderQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="OrderQuantityUnit"/>
+                <Annotation Term="SAP__common.Label" String="Auftragsmenge"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Kumulierte Auftragsmenge in VME"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/TransactionCurrency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Belegwährung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währung des Vertriebsbelegs"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/SalesDocumentItemCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Positionstyp"/>
+                <Annotation Term="SAP__common.Heading" String="Ptyp"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Positionstyp Vertriebsbeleg"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/DeliveryDocumentItemCategory">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Positionstyp"/>
+                <Annotation Term="SAP__common.Heading" String="Ptyp"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Lieferpositionstyp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/ConditionRateValue">
+                <Annotation Term="SAP__common.Label" String="CHF - Rabatt"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurrency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/ConditionCurrency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/ConditionRateValuePer">
+                <Annotation Term="SAP__common.Label" String="% - Rabatt"/>
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/ConditionCurrencyPer">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/LocalLastChangedAt">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Zeitstempel"/>
+                <Annotation Term="SAP__common.QuickInfo" String="UTC-Zeitstempel in Langform (JJJJMMTThhmmssmmmuuun)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/NlagBringInProduct">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Produkt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Produktnummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/NlagPickUpProduct">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Produkt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Produktnummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/BringInConditionUnit">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Konditionswährung"/>
+                <Annotation Term="SAP__common.Heading" String="Einh."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Konditionsmengeneinheit (Währung oder Prozentsatz)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/VKP0ConditionCurrency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/VPK0ConditionRateValue">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="VKP0ConditionCurrency"/>
+                <Annotation Term="SAP__common.Label" String="Betrag"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Konditionsbetrag oder -prozentsatz"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/BringInConditionRateValue">
+                <Annotation Term="SAP__common.Label" String="BringIn Preis"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="VKP0ConditionCurrency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/PickUpCondTotalRateValue">
+                <Annotation Term="SAP__common.Label" String="PickUp Preis"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="VKP0ConditionCurrency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MobilePrOneYrCondRateValue">
+                <Annotation Term="SAP__common.Label" String="Mob. Protect 1J"/>
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/MobilePrTwoYrCondRateValue">
+                <Annotation Term="SAP__common.Label" String="Mob. Protect 2J"/>
+                <Annotation Term="SAP__core.Computed"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/HasDraftEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat Entwurf"/>
+                <Annotation Term="SAP__common.Heading" String="Hat Entw."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat Entwurfsdokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/DraftEntityCreationDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/DraftEntityLastChangeDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/HasActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat aktives Dokument"/>
+                <Annotation Term="SAP__common.Heading" String="Hat aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/IsActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Ist aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Ist aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__EntityControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/PickupOrderItem">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_PickupOrder"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_SalesOrderItemNlag"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftNode">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftActivationVia">
+                    <Collection>
+                        <String>SAP__self.Container/PickupOrder</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>MobilePrOneYrCondRateValue</PropertyPath>
+                                <PropertyPath>MobilePrTwoYrCondRateValue</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>MobilePrOneYrCondRateValue</PropertyPath>
+                                <PropertyPath>MobilePrTwoYrCondRateValue</PropertyPath>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.activateArticle(SAP__self.PickupOrderItemType)/cardId">
+                <Annotation Term="SAP__common.Label" String="ID-Karte"/>
+            </Annotations>
+            <Annotations Target="SAP__self.activateArticle(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/activateArticle"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtPickUp(SAP__self.PickupOrderItemType)/ConditionCurreny">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtPickUp(SAP__self.PickupOrderItemType)/PickUpCondTotalRateValue">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurreny"/>
+                <Annotation Term="SAP__common.Label" String="PickUp Preis (CHF)"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/PickUpCondTotalRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtPickUp(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setWarrantyExtPickUp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectOneYr(SAP__self.PickupOrderItemType)/ConditionCurreny">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectOneYr(SAP__self.PickupOrderItemType)/MobilePrOneYrCondRateValue">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurreny"/>
+                <Annotation Term="SAP__common.Label" String="Mob. Protect Preis (CHF)"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/MobilePrOneYrCondRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectOneYr(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setMobileProtectOneYr"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtBringIn(SAP__self.PickupOrderItemType)/ConditionCurreny">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtBringIn(SAP__self.PickupOrderItemType)/BringInConditionRateValue">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurreny"/>
+                <Annotation Term="SAP__common.Label" String="BringIn Preis (CHF)"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/BringInConditionRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setWarrantyExtBringIn(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setWarrantyExtBringIn"/>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Action_setWarrantyExtBringIn">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="TargetEntities">
+                            <Collection>
+                                <NavigationPropertyPath>_it/_SalesOrderItemNlag</NavigationPropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.setPosDiscount(SAP__self.PickupOrderItemType)/ConditionCurreny">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setPosDiscount(SAP__self.PickupOrderItemType)/DiscountAmount">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurreny"/>
+                <Annotation Term="SAP__common.Label" String="CHF - Pos.Rabatt"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/ConditionRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setPosDiscount(SAP__self.PickupOrderItemType)/ConditionCurrenyPer">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setPosDiscount(SAP__self.PickupOrderItemType)/DiscountAmountPer">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurrenyPer"/>
+                <Annotation Term="SAP__common.Label" String="% - Pos.Rabatt"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/ConditionRateValuePer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setPosDiscount(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setPosDiscount"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectTwoYr(SAP__self.PickupOrderItemType)/ConditionCurreny">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectTwoYr(SAP__self.PickupOrderItemType)/MobilePrTwoYrCondRateValue">
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurreny"/>
+                <Annotation Term="SAP__common.Label" String="Mob. Protect Preis (CHF)"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/MobilePrTwoYrCondRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setMobileProtectTwoYr(SAP__self.PickupOrderItemType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setMobileProtectTwoYr"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType">
+                <Annotation Term="SAP__common.Label" String="Projection-View Auftragpos Kundenab"/>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="KundenauftragPositon"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Material"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeErhalten"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeUebergabe"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MengeStorno"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Lagerplatz"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="ConditionRateValue"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="ConditionRateValuePer"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="BringInConditionRateValue"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="PickUpCondTotalRateValue"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MobilePrTwoYrCondRateValue"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="MobilePrOneYrCondRateValue"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="NumberOfActivation"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Aktivieren"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.activateArticle(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="pick up(Garantievrl.)"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtPickUp(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="bring in(Garantievrl.)"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setWarrantyExtBringIn(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Mob. Protect 2J"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectTwoYr(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Mob. Protect 1J"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setMobileProtectOneYr(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Pos.Rabatt"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setPosDiscount(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderItemType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                            <PropertyValue Property="Inline" Bool="true"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container">
+                <Annotation Term="SAP__CodeList.CurrencyCodes">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="Currencies"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__CodeList.UnitsOfMeasure">
+                    <Record>
+                        <PropertyValue Property="Url" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="CollectionPath" String="UnitsOfMeasure"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="SAP__aggregation.RollupType/None"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="SAP__capabilities.FilterFunctions">
+                    <Collection>
+                        <String>eq</String>
+                        <String>ne</String>
+                        <String>gt</String>
+                        <String>ge</String>
+                        <String>lt</String>
+                        <String>le</String>
+                        <String>and</String>
+                        <String>or</String>
+                        <String>contains</String>
+                        <String>startswith</String>
+                        <String>endswith</String>
+                        <String>any</String>
+                        <String>all</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SupportedFormats">
+                    <Collection>
+                        <String>application/json</String>
+                        <String>application/pdf</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__PDF.Features">
+                    <Record>
+                        <PropertyValue Property="DocumentDescriptionReference" String="../../../../default/iwbep/common/0001/$metadata"/>
+                        <PropertyValue Property="DocumentDescriptionCollection" String="MyDocumentDescriptions"/>
+                        <PropertyValue Property="ArchiveFormat" Bool="true"/>
+                        <PropertyValue Property="Border" Bool="true"/>
+                        <PropertyValue Property="CoverPage" Bool="true"/>
+                        <PropertyValue Property="FitToPage" Bool="true"/>
+                        <PropertyValue Property="FontName" Bool="true"/>
+                        <PropertyValue Property="FontSize" Bool="true"/>
+                        <PropertyValue Property="Margin" Bool="true"/>
+                        <PropertyValue Property="Padding" Bool="true"/>
+                        <PropertyValue Property="Signature" Bool="true"/>
+                        <PropertyValue Property="HeaderFooter" Bool="true"/>
+                        <PropertyValue Property="ResultSizeDefault" Int="20000"/>
+                        <PropertyValue Property="ResultSizeMaximum" Int="20000"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.KeyAsSegmentSupported"/>
+                <Annotation Term="SAP__capabilities.AsynchronousRequestsSupported"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/SalesOrder">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Kundenauftrag"/>
+                <Annotation Term="SAP__common.Heading" String="KundAuftr."/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/SalesOrderItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Position"/>
+                <Annotation Term="SAP__common.Heading" String="KdAuftrPos"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Kundenauftragsposition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/Product">
+                <Annotation Term="SAP__common.Label" String="Artikel"/>
+                <Annotation Term="SAP__common.Text" Path="ProductName"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_productstdvh/0001;ps='srvd-zui_storepickuporder-0001';va='com.sap.gateway.srvd.zui_storepickuporder.v0001.et-zi_storepickuporderitemnlag.product'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Heading" String="Produkt"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Produktnummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/OrderQuantity">
+                <Annotation Term="SAP__measures.Unit" Path="OrderQuantityUnit"/>
+                <Annotation Term="SAP__common.Label" String="Auftragsmenge"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Kumulierte Auftragsmenge in VME"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/OrderQuantityUnit">
+                <Annotation Term="SAP__common.IsUnit"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsmengeneinh."/>
+                <Annotation Term="SAP__common.Heading" String="ME"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Verkaufsmengeneinheit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/HigherLevelItem">
+                <Annotation Term="SAP__common.IsDigitSequence"/>
+                <Annotation Term="SAP__common.Label" String="Übergeordn. Position"/>
+                <Annotation Term="SAP__common.Heading" String="Üb.Pos"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Übergeordnete Position bei Stücklistenstrukturen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType">
+                <Annotation Term="SAP__common.Label" String="NLag-Auftragsposition für Kundenabholung"/>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="SalesOrderItem"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="HigherLevelItem"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Product"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="OrderQuantity"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/PickupOrderItemNlag">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="OrderQuantity"/>
+                                    <PropertyValue Property="AllowedExpressions" String="MultiValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftEntityType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurfsentitäts-ID"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUser">
+                <Annotation Term="SAP__common.Text" Path="CreatedByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_draftadministrativeuservh/0001;ps='srvd-zui_storepickuporder-0001';va='com.sap.gateway.srvd.zui_storepickuporder.v0001.et-i_draftadministrativedata.createdbyuser'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUser">
+                <Annotation Term="SAP__common.Text" Path="LastChangedByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_draftadministrativeuservh/0001;ps='srvd-zui_storepickuporder-0001';va='com.sap.gateway.srvd.zui_storepickuporder.v0001.et-i_draftadministrativedata.lastchangedbyuser'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftAccessType">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurfszugriffstyp"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUser">
+                <Annotation Term="SAP__common.Text" Path="InProcessByUserDescription"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf wird bearbeitet von"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType">
+                <Annotation Term="SAP__common.Label" String="Verwaltungsdaten für Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/I_DraftAdministrativeData">
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="CreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SalesOrder">
+                <Annotation Term="SAP__common.Text" Path="PurchaseOrderByCustomer"/>
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.SemanticObject" String="SalesOrder"/>
+                <Annotation Term="SAP__common.Label" String="Kundenauftrag"/>
+                <Annotation Term="SAP__common.Heading" String="KundAuftr."/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SalesOrderType">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Kundenauftragsart"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/PurchaseOrderByCustomer">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__common.Label" String="Kundenreferenz"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SalesOrganization">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Verkaufsorganisation"/>
+                <Annotation Term="SAP__common.Heading" String="VkOrg"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/DistributionChannel">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Vertriebsweg"/>
+                <Annotation Term="SAP__common.Heading" String="VWeg"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/OrganizationDivision">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Sparte"/>
+                <Annotation Term="SAP__common.Heading" String="SP"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/Customer">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/i_customer_vh/0001;ps='srvd-zui_storepickuporder-0001';va='com.sap.gateway.srvd.zui_storepickuporder.v0001.et-zc_storepickuporder.customer'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.SemanticObject" String="Store"/>
+                <Annotation Term="SAP__common.Label" String="Auftraggeber"/>
+                <Annotation Term="SAP__common.Heading" String="AuftrGeber"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/PaymentStatus">
+                <Annotation Term="SAP__common.Text" Path="PaymentStatusDescription">
+                    <Annotation Term="SAP__UI.TextArrangement" EnumMember="SAP__UI.TextArrangementType/TextFirst"/>
+                </Annotation>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.ValueListReferences">
+                    <Collection>
+                        <String>../../../../srvd_f4/sap/zc_zahlstatus_sh/0001;ps='srvd-zui_storepickuporder-0001';va='com.sap.gateway.srvd.zui_storepickuporder.v0001.et-zc_storepickuporder.paymentstatus'/$metadata</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__common.Label" String="Zahlstatus"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SuperCardNo">
+                <Annotation Term="SAP__common.Label" String="Supercard"/>
+                <Annotation Term="SAP__common.Heading" String="SupercardId"/>
+                <Annotation Term="SAP__common.QuickInfo" String="SupercardId"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SalesOrderCondition">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Nr. Belegkondition"/>
+                <Annotation Term="SAP__common.Heading" String="Belegkond"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Nummer der Belegkondition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/ConditionRateValue">
+                <Annotation Term="SAP__common.Label" String="Kopfrabatt"/>
+                <Annotation Term="SAP__measures.ISOCurrency" Path="ConditionCurrency"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/ConditionCurrency">
+                <Annotation Term="SAP__common.IsCurrency"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__common.Label" String="Währung"/>
+                <Annotation Term="SAP__common.Heading" String="Währg"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Währungsschlüssel"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/Attachment">
+                <Annotation Term="SAP__core.ContentDisposition">
+                    <Record>
+                        <PropertyValue Property="Filename" Path="Filename"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.MediaType" Path="MimeType"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/MimeType">
+                <Annotation Term="SAP__core.IsMediaType"/>
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="128 Zeichen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/Filename">
+                <Annotation Term="SAP__common.IsUpperCase"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="128 Zeichen"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/HasDraftEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat Entwurf"/>
+                <Annotation Term="SAP__common.Heading" String="Hat Entw."/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat Entwurfsdokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/DraftEntityCreationDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/DraftEntityLastChangeDateTime">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/HasActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Hat aktives Dokument"/>
+                <Annotation Term="SAP__common.Heading" String="Hat aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Hat aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/IsActiveEntity">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Ist aktiv"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf - Kennzeichen - Ist aktives Dokument"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__EntityControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__OperationControl">
+                <Annotation Term="SAP__core.Computed"/>
+                <Annotation Term="SAP__UI.HiddenFilter"/>
+                <Annotation Term="SAP__UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/_StorePickupOrderItem">
+                <Annotation Term="SAP__common.Composition"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Container/PickupOrder">
+                <Annotation Term="SAP__capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_StorePickupOrderItem"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="_StorePickupOrderItemNlag"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.Activate"/>
+                        <PropertyValue Property="PreparationAction" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.Prepare"/>
+                        <PropertyValue Property="EditAction" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.Edit"/>
+                        <PropertyValue Property="DiscardAction" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.Discard"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SearchRestrictions">
+                    <Record>
+                        <PropertyValue Property="Searchable" Bool="true"/>
+                        <PropertyValue Property="UnsupportedExpressions" EnumMember="SAP__capabilities.SearchExpressions/AND SAP__capabilities.SearchExpressions/OR SAP__capabilities.SearchExpressions/NOT SAP__capabilities.SearchExpressions/group SAP__capabilities.SearchExpressions/phrase"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="Filterable" Bool="true"/>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>__EntityControl</PropertyPath>
+                                <PropertyPath>__OperationControl</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="__EntityControl/Updatable"/>
+                        <PropertyValue Property="QueryOptions">
+                            <Record>
+                                <PropertyValue Property="SelectSupported" Bool="true"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.setPersonnelNo(SAP__self.PickupOrderType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setPersonnelNo"/>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Action_setPersonnelNo">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>_it/PersonnelNo</String>
+                                <String>_it/SAP__Messages</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.setHeaderDiscount(SAP__self.PickupOrderType)/DiscountAmount">
+                <Annotation Term="SAP__common.Label" String="Betrag Kopfrabatt (CHF)"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/ConditionRateValue"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setHeaderDiscount(SAP__self.PickupOrderType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setHeaderDiscount"/>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Action_setHeaderDiscount">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>_it/ConditionRateValue</String>
+                                <String>_it/SAP__Messages</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.setSuperCard(SAP__self.PickupOrderType)/SuperCardId">
+                <Annotation Term="SAP__common.Label" String="Supercard"/>
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/SuperCardNo"/>
+                <Annotation Term="SAP__common.Heading" String="SupercardId"/>
+                <Annotation Term="SAP__common.QuickInfo" String="SupercardId"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setSuperCard(SAP__self.PickupOrderType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/setSuperCard"/>
+                <Annotation Term="SAP__common.SideEffects" Qualifier="SAP__Action_setSuperCard">
+                    <Record Type="SAP__common.SideEffectsType">
+                        <PropertyValue Property="TargetProperties">
+                            <Collection>
+                                <String>_it/SuperCardNo</String>
+                                <String>_it/SAP__Messages</String>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.Edit(SAP__self.PickupOrderType)">
+                <Annotation Term="SAP__core.OperationAvailable" Path="_it/__OperationControl/Edit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType">
+                <Annotation Term="SAP__common.Label" String="Projection-View Auftrag Kundenabh"/>
+                <Annotation Term="SAP__UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="ID" String="SalesOrder"/>
+                            <PropertyValue Property="Target" AnnotationPath="@SAP__UI.FieldGroup#PickupSalesOrder"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.Facets">
+                    <Collection>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Produktdetails"/>
+                            <PropertyValue Property="ID" String="Item"/>
+                            <PropertyValue Property="Target" AnnotationPath="_StorePickupOrderItem/@SAP__UI.LineItem"/>
+                        </Record>
+                        <Record Type="SAP__UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Services"/>
+                            <PropertyValue Property="ID" String="ItemNlag"/>
+                            <PropertyValue Property="Target" AnnotationPath="_StorePickupOrderItemNlag/@SAP__UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.FieldGroup" Qualifier="PickupSalesOrder">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="PaymentStatus"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="SuperCardNo"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="PersonnelNo"/>
+                                </Record>
+                                <Record Type="SAP__UI.DataField">
+                                    <PropertyValue Property="Value" Path="ConditionRateValue"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.HeaderInfo">
+                    <Record>
+                        <PropertyValue Property="TypeName" String="Auftrag"/>
+                        <PropertyValue Property="TypeNamePlural" String="Aufträge"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="SalesOrder"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="SAP__UI.DataField">
+                                <PropertyValue Property="Value" Path="CustomerName"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__UI.Identification">
+                    <Collection>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerName"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Kopfrabatt"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setHeaderDiscount(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Personalkartennummer"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setPersonnelNo(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForAction">
+                            <PropertyValue Property="Label" String="Supercard"/>
+                            <PropertyValue Property="Action" String="com.sap.gateway.srvd.zui_storepickuporder.v0001.setSuperCard(com.sap.gateway.srvd.zui_storepickuporder.v0001.PickupOrderType)"/>
+                            <PropertyValue Property="InvocationGrouping" EnumMember="SAP__UI.OperationGroupingType/Isolated"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.LineItem">
+                    <Collection>
+                        <Record Type="SAP__UI.DataFieldWithIntentBasedNavigation">
+                            <PropertyValue Property="SemanticObject" String="SalesOrder"/>
+                            <PropertyValue Property="Action" String="manageV2"/>
+                            <PropertyValue Property="Value" Path="SalesOrder"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerName"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="PaymentStatus"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataField">
+                            <PropertyValue Property="Value" Path="Attachment"/>
+                            <Annotation Term="SAP__UI.Importance" EnumMember="SAP__UI.ImportanceType/High"/>
+                        </Record>
+                        <Record Type="SAP__UI.DataFieldForIntentBasedNavigation">
+                            <PropertyValue Property="Label" String="Filiale zuordnen"/>
+                            <PropertyValue Property="SemanticObject" String="Store"/>
+                            <PropertyValue Property="Action" String="displayOverview"/>
+                            <PropertyValue Property="RequiresContext" Bool="false"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="SAP__UI.PresentationVariant">
+                    <Record>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="SAP__common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="LastChangeDate"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@SAP__UI.LineItem</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Communication.Contact">
+                    <Record/>
+                </Annotation>
+                <Annotation Term="SAP__common.Messages" Path="SAP__Messages"/>
+            </Annotations>
+            <Annotations Target="SAP__self.activateArticle(SAP__self.PickupOrderItemType)/numberOfActivation">
+                <Annotation Term="SAP__UI.ParameterDefaultValue" Path="_it/NumberOfActivation"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftUUID">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf (techn. ID)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf (technische ID)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf (technische ID)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/ProcessingStartDateTime">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf in Bearbeitung seit"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf in Bearb. seit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsKeptByUser">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf beibeihalten von Benutzer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/EnqueueStartDateTime">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf gesperrt seit"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsCreatedByMe">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir erstellter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsLastChangedByMe">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir zuletzt geänderter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/DraftIsProcessedByMe">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Von mir bearbeiteter Entwurf"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreatedByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangedByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert von (Beschr.)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf zuletzt geändert von (Beschreibung)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf zuletzt geändert von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/InProcessByUserDescription">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Entwurf wird bearbeitet von (Beschr.)"/>
+                <Annotation Term="SAP__common.Heading" String="Entwurf wird bearbeitet von (Beschreibung)"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Entwurf wird bearbeitet von (Beschreibung)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/SearchCustomerName">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Name 1"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/LastChangeDate">
+                <Annotation Term="SAP__UI.Hidden"/>
+                <Annotation Term="SAP__common.Label" String="Geändert am"/>
+                <Annotation Term="SAP__common.Heading" String="Geänd.am"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Datum der letzten Änderung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Methodensteuerg"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamische Methodensteuerung"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Methodeneigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/activateArticle">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/setMobileProtectOneYr">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/setMobileProtectTwoYr">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/setPosDiscount">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/setWarrantyExtBringIn">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemType/__OperationControl/setWarrantyExtPickUp">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemNlagType/ProductName">
+                <Annotation Term="SAP__common.Label" String="Produktbeschreibung"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/CreationDateTime">
+                <Annotation Term="SAP__common.Label" String="Entwurf angelegt am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.I_DraftAdministrativeDataType/LastChangeDateTime">
+                <Annotation Term="SAP__common.Label" String="Entwurf zuletzt geändert am"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/CustomerName">
+                <Annotation Term="SAP__common.Label" String="Vollständiger Name"/>
+                <Annotation Term="SAP__common.Heading" String="Voll. Name"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Vollst. Name eines Beteiligten (GP, OrgEinheit, DokAdresse)"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/PaymentStatusDescription">
+                <Annotation Term="SAP__common.Label" String="Beschreibung ZahlSta"/>
+                <Annotation Term="SAP__common.Heading" String="Beschreibung Zahl Status"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Beschreibung Zahlstatus"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/PersonnelNo">
+                <Annotation Term="SAP__common.Label" String="Personalkartennummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Methodensteuerg"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamische Methodensteuerung"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Methodeneigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__OperationControl/Edit">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__OperationControl/setHeaderDiscount">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__OperationControl/setPersonnelNo">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderType/__OperationControl/setSuperCard">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/activateArticle">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/setMobileProtectOneYr">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/setMobileProtectTwoYr">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/setPosDiscount">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/setWarrantyExtBringIn">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderItemOperationControl/setWarrantyExtPickUp">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderOperationControl/Edit">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderOperationControl/setHeaderDiscount">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderOperationControl/setPersonnelNo">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.PickupOrderOperationControl/setSuperCard">
+                <Annotation Term="SAP__common.Label" String="Dyn. Aktions-Control"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamisches Aktions-Control"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Aktionseigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.EntityControl/Updatable">
+                <Annotation Term="SAP__common.Label" String="Dyn. Methodensteuerg"/>
+                <Annotation Term="SAP__common.Heading" String="Dynamische Methodensteuerung"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Dynamische Methodeneigenschaft"/>
+            </Annotations>
+            <Annotations Target="SAP__self.setPersonnelNo(SAP__self.PickupOrderType)/PersonnelNo">
+                <Annotation Term="SAP__common.Label" String="Personalkartennummer"/>
+            </Annotations>
+            <Annotations Target="SAP__self.Edit(SAP__self.PickupOrderType)/PreserveChanges">
+                <Annotation Term="SAP__common.Label" String="TRUE"/>
+                <Annotation Term="SAP__common.QuickInfo" String="Datenelement zur Domäne BOOLE: TRUE (='X') und FALSE (=' ')"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
